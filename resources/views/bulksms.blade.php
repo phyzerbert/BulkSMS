@@ -17,7 +17,8 @@
             
             <div class="col-md-8">
                 @if(session('success'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>Success!</strong> {{session('success')}}
                     </div>
                 @endif
