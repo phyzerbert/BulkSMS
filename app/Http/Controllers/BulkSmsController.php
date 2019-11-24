@@ -74,8 +74,6 @@ class BulkSmsController extends Controller
                             ]
                         );
                     }
-                    
-
 
                     // Save Database
                     Activity::create([

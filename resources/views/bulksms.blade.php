@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                     <button type="button" id="btn_sms" class="btn btn-primary mr-3">Send SMS</button>
-                    <button type="button" id="btn_whatsapp" class="btn btn-primary mr-3">Send WhatsApp Msg</button>
+                    {{-- <button type="button" id="btn_whatsapp" class="btn btn-primary mr-3">Send WhatsApp Msg</button> --}}
                     <a href="/export" class="btn btn-info">Export Activity</a>
                 </form>
             </div>
