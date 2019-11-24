@@ -14,7 +14,7 @@ use Excel;
 class BulkSmsController extends Controller
 {
     public function __construct() {
-        ini_set('max_execution_time', 3000000);
+        ini_set('max_execution_time', 900000000000);
     }
 
     public function sendSms( Request $request ) {
@@ -61,7 +61,7 @@ class BulkSmsController extends Controller
                         $client->messages->create(
                             "whatsapp:".$phone_number,
                             [
-                                'from' => "whatsapp:".env('TWILIO_FROM'),
+                                'from' => "whatsapp:".env('WHATSAPP_FROM'),
                                 'body' => $message,
                             ]
                         );
