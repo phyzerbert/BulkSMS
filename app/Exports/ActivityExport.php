@@ -5,10 +5,10 @@ namespace App\Exports;
 use App\Activity;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+// use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class ActivityExport implements FromArray, WithHeadings, WithColumnFormatting, ShouldAutoSize
+class ActivityExport implements FromArray, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
