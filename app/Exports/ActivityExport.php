@@ -37,10 +37,4 @@ class ActivityExport implements FromArray, WithHeadings, ShouldAutoSize
         ];
     }
 
-    // public function columnFormats(): array
-    // {
-    //     return [
-    //         'B' => TextFormat::FORMAT_DATE_DDMMYYYY,
-    //     ];
-    // }
 }
