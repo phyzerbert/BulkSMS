@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::post('/bulksms', 'BulkSmsController@sendSms');
 Route::get('export/', 'BulkSmsController@export');
+Route::get('get_numbers', 'BulkSmsController@get_numbers');

@@ -18,7 +18,6 @@ class BulkSmsController extends Controller
     }
 
     public function sendSms( Request $request ) {
-        // Your Account SID and Auth Token from twilio.com/console
         $sid    = env( 'TWILIO_SID' );
         $token  = env( 'TWILIO_TOKEN' );
         $client = new Client( $sid, $token );
@@ -48,15 +47,14 @@ class BulkSmsController extends Controller
                 $s_number = $e_number;
                 $e_number = $temp_number;
             }
-            $count = 0;
             
             for ($number=$s_number; $number <= $e_number; $number++) { 
-                
+
                 $phone_number = $prefix.$number;
+
                 try {
                     $result_validate = $client->lookups->v1->phoneNumbers($phone_number)->fetch();
-                    // Send SMS
-
+                    
                     if($type == 'whatsapp') {
                         $client->messages->create(
                             "whatsapp:".$phone_number,
@@ -84,10 +82,10 @@ class BulkSmsController extends Controller
                     ]);
                     $count++;
                 } catch (\Exception $e) {
-                    dd($e);
+                    // dd($e);
                 }
             }
-            
+
             return back()->with( 'success', $count . " messages sent!" );
               
         } else {
@@ -101,6 +99,11 @@ class BulkSmsController extends Controller
 
     public function export(){
         return Excel::download(new ActivityExport, 'phone_numbers.xlsx');
+    } 
+
+    public function get_numbers(Request $request) {
+        $phone_numbers = Activity::distinct('phone_number')->pluck('phone_number')->toArray();
+        dump($phone_numbers);
     }
 
 }
