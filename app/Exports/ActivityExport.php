@@ -13,14 +13,14 @@ class ActivityExport implements FromArray, WithHeadings
     */
     public function array(): array
     {
-        $data =  Activity::distinct('phone_number')->get();
+        $data =  Activity::all()->unique('phone_number');
         $activities = array();
         $i = 0;
         foreach ($data as $item) {
             $activities[$i] = array();
             $activities[$i]['no'] = $i+1;
             $activities[$i]['phone_number'] = $item->phone_number;
-            $activities[$i]['date_time'] = $item->creatd_at;
+            $activities[$i]['date_time'] = $item->created_at;
             $i++;
         }
         return $activities;
