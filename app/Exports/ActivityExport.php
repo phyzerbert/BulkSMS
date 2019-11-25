@@ -5,8 +5,10 @@ namespace App\Exports;
 use App\Activity;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class ActivityExport implements FromArray, WithHeadings
+class ActivityExport implements FromArray, WithHeadings, WithColumnFormatting, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -34,4 +36,11 @@ class ActivityExport implements FromArray, WithHeadings
             'Date & Time',
         ];
     }
+
+    // public function columnFormats(): array
+    // {
+    //     return [
+    //         'B' => TextFormat::FORMAT_DATE_DDMMYYYY,
+    //     ];
+    // }
 }
