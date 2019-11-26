@@ -11,10 +11,12 @@ use App\Activity;
 use App\Exports\ActivityExport;
 use Excel;
 
+use DB;
+
 class BulkSmsController extends Controller
 {
     public function __construct() {
-        ini_set('max_execution_time', 900000000000);
+        ini_set('max_execution_time', 9999999999999);
     }
 
     public function sendSms( Request $request ) {
@@ -72,12 +74,14 @@ class BulkSmsController extends Controller
                 }
 
                 // Save Database
-                Activity::create([
-                    'reference_no' => $reference_no,
-                    'phone_number' => $phone_number,
-                    'message' => $message,
-                    'type' => $type,
-                ]);
+                DB::transaction(function () {
+                    Activity::create([
+                        'reference_no' => $reference_no,
+                        'phone_number' => $phone_number,
+                        'message' => $message,
+                        'type' => $type,
+                    ]);
+                });
                 $count++;
             } catch (\Exception $e) {
                 // dd($e);

@@ -29,7 +29,7 @@
             <div class="col-md-8">
                 <form action="/bulksms" method="post" id="smsForm">
                     @csrf
-                    <input type="hidden" name="type" id="msg_type" value="" />
+                    <input type="hidden" name="type" id="msg_type" value="sms" />
                     <div class="form-group row">
                         <div class="col-md-6">                            
                             <label for="start_number">Start Number</label>
